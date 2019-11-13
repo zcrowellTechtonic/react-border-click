@@ -1,38 +1,97 @@
 /** @jsx jsx */
 import { useState } from "react";
 import { jsx } from "@emotion/core";
-import styles from "./HelloWorldStyles.js";
 import Tile from "./Tile.js";
-// Simple array to get us started and start seeing what we can do
-const peopleArray = [
-  { id: 1, name: "Dog" },
-  { id: 2, name: "Person" },
-  { id: 3, name: "Cat" }
+// Our starting with an array of multiple animal objects
+const allAnimals = [
+  { id: 1, name: "Dog", description: "I am a super dog" },
+  { id: 2, name: "Monkey", description: "I am a super monkey" },
+  { id: 3, name: "Cat", description: "I am a super cat" }
 ];
-const singlePerson = {id: 4, name: "Monkey"}
-peopleArray.push(singlePerson)
+// Our starting current animal
+const currentAnimal = { id: 2, name: "Monkey" };
+console.log("Current animal", currentAnimal)
+// Using find to match our current animal to an animal object in the allAnimals array
+const matchedAnimal = allAnimals.find(matched => matched.name === currentAnimal.name)
+console.log("Matched animal in allAnimals", matchedAnimal);
+/* 
+Using Object.assign and spread operator. First we copy matchedAnimal as the first object,
+then we assign the id key a new value of 4. This is to avoid the duplicate key error
+while mapping through or data that is being passed to our tile component. 
+*/
+const assigningID = Object.assign({...matchedAnimal}, {id: 4})
+console.log("Copying matched object and assigning a different ID", assigningID)
+// After finding and assigning our object a new ID. We push the object into the allAnimals array
+allAnimals.push(assigningID);
 // Funcitonal component that has been exported and then imported into App.js
-function HelloWorld() {
-// React hook that keeps a small bit of state for us
-  const [border, setBorder] = useState(3);
-// Logging what our constant of border contains
+const HelloWorld = () => {
+  // React hook that keeps a small bit of state for us.
+  const [border, setBorder] = useState(allAnimals.length - 1);
+  /*
+  the length of the array that we're mapping through minus one. Length will give us the total length of
+  the array starting at one. But arrays are counted starting at 0. By using the - 1 we get the true length of the 
+  array.
+
+  Example.
+  const numbersArray = [1,2,3,4,5,6]
+  the real location of each number in the numbersArray is [0,1,2,3,4,5]
+
+  if you were to console log console.log(numbersArray.length) it would return 6
+
+  if we want to LAND on the last element in an array we can use length - 1
+
+  Example.
+
+  numbersArray.length - 1 will be 5. Giving us the tru position of the last element in the array.
+  */
+
+  // Logging what our constant of border contains
   console.log("Index of list passed to border", border);
-
   return (
-    peopleArray.map((person, index) => (
-    <div
-      key={person.id}
-      onClick={() => setBorder(index)}
-      css={border === index ? styles.hotdog : styles.notHotdog}
-    >
-        {/* 
-        Tile component gets imported, peopleArray is mapped through and mapped data is sent into Tile component 
-        */}
-      <Tile key={person.id} person={person} />
+    // Main div holding a single version of the tile and a mapped through version
+      <div>
+        {/* Mapping through the allAnimals array and sending the mapped data
+            in the animal prop. Also sending the index of items in the array and
+            border as props.
+         */}
+         <h3>Example of rendering multiple tiles after mapping through array data:</h3>
+        {allAnimals.map((animal, index) => (
+          /* 
+          As we map through we are setting the key to the id in each object. 
+          This is why we assigned the object we pushed into our allAnimals array a new id.
+          If react sees a duplicate id it will throw an error.
 
-    </div>)
-  ));
-  
-}
+          We are setting an onClick event on the div that is holding our mapped through tile
+          component. Everytime we click the div. It will set the number in border to equal the clicked
+          on tiles index and send it into the tile component as a prop called border.
+
+          This is used to check the index and apply a style.
+          */
+          <div key={animal.id} onClick={() => setBorder(index)}>
+            <Tile
+              key={animal.id}
+              animal={animal}
+              index={index}
+              border={border}
+            />
+          </div>
+        ))}
+        {/* 
+        This is an example of rendering a single tile component.
+        We pass our matchedAnimal object that contains the data needed for a single tile
+        instead of mapping through an array. We set border to "none" because in our tile
+        component it is comparing index to borer. If we send nothing for the border prop
+        then they will both equal undefined which will mean they actually DO equal eachother.
+
+        If you send no border prop the values in the console will both change to undefined which
+        means the style with the border will be applied.
+
+        Remove the border={"none"} prop and notice how the single tile will now have a blue border.
+         */}
+         <h3>Example of rendering a single component</h3>
+        <Tile animal={matchedAnimal} border={"none"}></Tile>
+      </div>
+  );
+};
 
 export default HelloWorld;
