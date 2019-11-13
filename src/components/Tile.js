@@ -10,8 +10,10 @@ function Tile({ animal, border, index }) {
   If it does then a certain style is applied. If it does not. A default style is applied.
   */
   <div css={border === index ? styles.hot : styles.not}>
-    <span css={styles.not}>{animal.name}</span>
-    <span css={styles.not}>{animal.description}</span>
+    <div>
+      <p>{animal.name}</p>
+    </div>
+    <p>{animal.description}</p>
   </div>
     )
 }

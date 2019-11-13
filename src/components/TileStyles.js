@@ -4,8 +4,9 @@ const styles = {
     hot : css`
      text-align: center;
      background-color: grey;
-     height: 100px;
+     height: 150px;
      display: flex;
+     flex-direction: column;
      justify-content: center;
      align-items: center;
      border: 3px solid dodgerblue;
@@ -14,11 +15,13 @@ const styles = {
 `,
     not : css`
     text-align: center;
-    background-color: grey;
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+     background-color: grey;
+     border: 3px solid grey;
+     height: 150px;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
     margin: 5px;
 `
 }
