@@ -9,10 +9,12 @@ const peopleArray = [
   { id: 2, name: "Person" },
   { id: 3, name: "Cat" }
 ];
+const singlePerson = {id: 4, name: "Monkey"}
+peopleArray.push(singlePerson)
 // Funcitonal component that has been exported and then imported into App.js
 function HelloWorld() {
 // React hook that keeps a small bit of state for us
-  const [border, setBorder] = useState(null);
+  const [border, setBorder] = useState(3);
 // Logging what our constant of border contains
   console.log("Index of list passed to border", border);
 
