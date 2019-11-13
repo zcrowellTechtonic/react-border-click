@@ -86,7 +86,7 @@ const HelloWorld = () => {
         This is an example of rendering a single tile component.
         We pass our matchedAnimal object that contains the data needed for a single tile
         instead of mapping through an array. We set border to "none" because in our tile
-        component it is comparing index to borer. If we send nothing for the border prop
+        component it is comparing index to border. If we send nothing for the border prop
         then they will both equal undefined which will mean they actually DO equal eachother.
 
         If you send no border prop the values in the console will both change to undefined which
