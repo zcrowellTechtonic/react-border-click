@@ -94,7 +94,7 @@ const HelloWorld = () => {
 
         Remove the border={"none"} prop and notice how the single tile will now have a blue border.
          */}
-         <h3>Example of rendering a single component</h3>
+         <h3>Single tile no border: </h3>
         <Tile animal={matchedAnimal} border={"none"}></Tile>
       </div>
   );

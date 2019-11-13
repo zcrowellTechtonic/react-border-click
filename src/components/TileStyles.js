@@ -1,30 +1,30 @@
 import { css, jsx } from '@emotion/core'
 
 const styles = {
-    hot : css`
+    hotdog : css`
      text-align: center;
-     background-color: grey;
+     background-color: #b5b5b5;
      height: 150px;
      display: flex;
      flex-direction: column;
      justify-content: center;
      align-items: center;
-     border: 4px solid dodgerblue;
+     border: 4px solid #31abe8;
      margin: 5px;
-     cursor: pointer;
 `,
-    not : css`
+    notHotdog : css`
     text-align: center;
-     background-color: grey;
-     border: 4px solid grey;
+     background-color: #b5b5b5;
+     border: 4px solid #b5b5b5;
      height: 150px;
      display: flex;
      flex-direction: column;
      justify-content: center;
      align-items: center;
      margin: 5px;
-     cursor: pointer;
-
+`,
+petHeader : css`
+   margin: 10px;
 `
 }
 export default styles

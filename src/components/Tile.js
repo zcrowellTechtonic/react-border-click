@@ -9,10 +9,8 @@ function Tile({ animal, border, index }) {
   It is sent here. The ternary checks if the current item equals it's index.
   If it does then a certain style is applied. If it does not. A default style is applied.
   */
-  <div css={border === index ? styles.hot : styles.not}>
-    <div>
-      <p>{animal.name}</p>
-    </div>
+  <div css={border === index ? styles.hotdog : styles.notHotdog}>
+      <h4 css={styles.petHeader}>{animal.name}</h4>
     <p>{animal.description}</p>
   </div>
     )
