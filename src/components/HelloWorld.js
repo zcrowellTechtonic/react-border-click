@@ -3,6 +3,7 @@ import { useState } from "react";
 import { jsx } from "@emotion/core";
 import Tile from "./Tile.js";
 import allAnimals from "./animalsData.js";
+import styles from "./HelloWorldStyles.js";
 // Our starting with an array of multiple animal objects
 
 
@@ -72,7 +73,7 @@ const HelloWorld = () => {
             in the animal prop. Also sending the index of items in the array and
             border as props.
          */}
-         <h3>Example of rendering multiple tiles after mapping through array data:</h3>
+         <h3 css={styles.h3}>Example of rendering multiple tiles after mapping through array data:</h3>
         {allAnimals.map((animal, index) => (
           /* 
           As we map through we are setting the key to the id in each object. 
@@ -106,7 +107,7 @@ const HelloWorld = () => {
 
         Remove the border={"none"} prop and notice how the single tile will now have a blue border.
          */}
-         <h3>Single tile no border: </h3>
+         <h3 css={styles.h3}>Single tile no border: </h3>
         <Tile animal={matchedAnimal} border={"none"}></Tile>
       </div>
   );

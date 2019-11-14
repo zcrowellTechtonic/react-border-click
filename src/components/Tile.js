@@ -12,6 +12,11 @@ function Tile({ animal, border, index }) {
   <div css={border === index ? styles.hotdog : styles.notHotdog}>
       <h4 css={styles.petHeader}>{animal.name}</h4>
     <p>{animal.description}</p>
+    <button 
+    onClick={() => alert(index)}
+    disabled={border === index ? true : false}
+    css={border === 'none' ? styles.noBtn : styles.btn}
+    >Button</button>
   </div>
     )
 }

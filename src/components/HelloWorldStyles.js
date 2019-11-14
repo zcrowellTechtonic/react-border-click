@@ -1,9 +1,9 @@
 import { css, jsx } from '@emotion/core'
 
 const styles = {
-    mainContainer : css`
-    background-color: #ededed;
-    height: 100vh;
+    h3 : css`
+    text-align: center;
+    color: white;
     `
 }
 export default styles
